@@ -19,7 +19,7 @@ function App() {
     setImage(null);
 
     // Stop any previous audio
-    audioRef.current.pause();
+    audioRef.current.pause(); 
 
     try {
       const cleanName = pokemonName.toLowerCase().trim();
@@ -32,7 +32,9 @@ function App() {
 
       // 2. Get the ROAST (from YOUR Backend)
       // Make sure this URL matches your backend port (usually 8000)
-      const roastRes = await axios.get(`http://localhost:8000/roast/${cleanName}`);
+      // const roastRes = await axios.get(`http://localhost:8000/roast/${cleanName}`);
+      const backendUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000'; // Fallback for local dev
+      const roastRes = await axios.get(`${backendUrl}/roast/${cleanName}`);
       setData(roastRes.data);
 
       // 3. Play the Audio
