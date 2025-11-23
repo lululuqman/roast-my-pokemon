@@ -1,42 +1,102 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+:root {
+  --neon-red: #ff0055;
+  --dark-bg: #121212;
+  --card-bg: #1e1e1e;
+}
+
+body {
+  background-color: var(--dark-bg);
+  color: white;
+  font-family: 'Courier New', Courier, monospace; /* Retro terminal vibe */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.container {
   text-align: center;
+  width: 100%;
+  max-width: 400px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.title {
+  font-size: 2.5rem;
+  text-shadow: 2px 2px var(--neon-red);
+  margin-bottom: 20px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.input-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  border: 2px solid #333;
+  background: #000;
+  color: white;
+  font-size: 1rem;
+  outline: none;
 }
 
+input:focus {
+  border-color: var(--neon-red);
+}
+
+button {
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  background: var(--neon-red);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+button:disabled {
+  background: #555;
+  cursor: not-allowed;
+}
+
+/* The Pokemon Card */
 .card {
-  padding: 2em;
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid #333;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  animation: fadeIn 0.5s ease;
 }
 
-.read-the-docs {
-  color: #888;
+.poke-img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+}
+
+.roast-text {
+  margin-top: 20px;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #ddd;
+  font-style: italic;
+  border-left: 3px solid var(--neon-red);
+  padding-left: 15px;
+  text-align: left;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
