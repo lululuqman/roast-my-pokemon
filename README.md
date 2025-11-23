@@ -18,7 +18,8 @@ A full-stack application that generates unique, sarcastic audio roasts for any P
 - **AI & Voice:** Google Gemini API, ElevenLabs API
 
 ## 📸 Demo
-*(Insert a screenshot or a link to a video demo here)*
+<img width="1913" height="1068" alt="Screenshot 2025-11-24 013356" src="https://github.com/user-attachments/assets/fc1b40ad-83d5-4602-85f8-57ca2e635795" />
+
 
 ## 📦 Setup
 1. Clone the repo.
