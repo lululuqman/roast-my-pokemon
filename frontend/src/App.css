@@ -100,3 +100,23 @@ button:disabled {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  border-top-color: var(--neon-red); /* Uses your custom color */
+  border-radius: 50%;
+  animation: spin 1s ease-in-out infinite;
+  margin: 40px auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-message {
+    color: var(--neon-red);
+    font-size: 1.2rem;
+    margin-top: 10px;
+}

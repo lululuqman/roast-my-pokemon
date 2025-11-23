@@ -50,34 +50,57 @@ function App() {
   }
 
   return (
-    <div className="container">
-      <h1 className="title">🔥 Pokedex Roast</h1>
-      
-      <div className="input-group">
-        <input 
-          type="text" 
-          placeholder="Enter Pokemon (e.g. Pikachu)" 
-          value={pokemonName}
-          onChange={(e) => setPokemonName(e.target.value)}
-          onKeyDown={(e) => e.key === 'Enter' && handleRoast()}
-        />
-        <button onClick={handleRoast} disabled={loading}>
-          {loading ? 'Roasting...' : 'Roast It'}
+  <div className="container">
+    <h1 className="title">🔥 Pokedex Roast</h1>
+    
+    <div className="input-group">
+      <input 
+        type="text" 
+        placeholder="Enter Pokemon (e.g. Pikachu)" 
+        value={pokemonName}
+        onChange={(e) => setPokemonName(e.target.value)}
+        onKeyDown={(e) => e.key === 'Enter' && handleRoast()}
+      />
+      <button onClick={handleRoast} disabled={loading}>
+        {loading ? 'Roasting...' : 'Roast It'}
+      </button>
+    </div>
+
+    {/* --- NEW LOADING LOGIC --- */}
+    {loading && (
+      <div className="card">
+        <div className="spinner"></div>
+        <p className="loading-message">
+          Generating roast with Gemini and synthesizing voice with ElevenLabs...
+        </p>
+      </div>
+    )}
+
+    {/* Display Card only when NOT loading and we have data */}
+    {!loading && image && data && (
+      <div className="card">
+        <img src={image} alt={data.name} className="poke-img" />
+        <h2 style={{textTransform: 'capitalize'}}>{data.name}</h2>
+        
+        <div className="roast-text">
+          "{data.roast_text}"
+        </div>
+
+        <button 
+          style={{marginTop: '15px', backgroundColor: '#333', fontSize: '0.8rem'}}
+          onClick={() => {
+            if (data.audio_url) {
+              const audio = new Audio(data.audio_url);
+              audio.play();
+            }
+          }}
+        >
+          🔊 Replay Voice
         </button>
       </div>
-
-      {/* Display Card only when we have data */}
-      {image && data && (
-        <div className="card">
-          <img src={image} alt={data.name} className="poke-img" />
-          <h2 style={{textTransform: 'capitalize'}}>{data.name}</h2>
-          <div className="roast-text">
-            "{data.roast_text}"
-          </div>
-        </div>
-      )}
-    </div>
-  )
+    )}
+  </div>
+)
 }
 
 export default App
